@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ali Haider Azam — I build the software real businesses run on</title>
+<meta name="description" content="Ali Haider Azam builds mobile apps, storefronts, custom dashboards and the servers behind them — live on Google Play and the web, taking real orders. Gujranwala, Pakistan.">
+<meta name="theme-color" content="#0A0908">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ali Haider Azam — I build the software real businesses run on">
+<meta property="og:description" content="Apps, storefronts, custom dashboards and backends — 20 builds, many of them live.">
+<meta property="og:url" content="https://haiderportfolio.com/">
+<meta property="og:image" content="https://haiderportfolio.com/assets/og.jpg">
+<link rel="canonical" href="https://haiderportfolio.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FF5B2E'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-size='44' text-anchor='middle' fill='%23140A05'%3Ea%3C/text%3E%3C/svg%3E">
+<script>
+  // Before first paint: restore saved theme and flag that JS is running (turns animations on).
+  (function () {
+    var d = document.documentElement, t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+    d.classList.add('js');
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- ?v= numbers force browsers to fetch fresh files after an update; bump them when you change a file -->
+<link rel="stylesheet" href="styles.css?v=11">
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__meta mono"><span>Ali Haider Azam · KONO</span><span>Portfolio © 2026</span></div>
+  <div class="loader__name" id="loaderName">Ali Haider Azam</div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+  <div class="loader__count" id="loaderCount">00</div>
+</div>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" id="cursorLabel"></span></div>
+<div class="ambient" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand" aria-label="Ali Haider Azam — back to top">
+    <span class="nav__mark serif" aria-hidden="true">a</span>
+    <span class="nav__name">Ali Haider Azam</span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#dashboards">Dashboards</a>
+    <a href="#live">Live</a>
+    <a href="#principles">Principles</a>
+  </nav>
+  <div class="nav__right">
+    <span class="nav__clock mono" title="My local time in Gujranwala"><i class="dot"></i><span data-clock>--:--</span>&nbsp;PKT</span>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch between light and dark theme">
+      <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg>
+    </button>
+    <a href="#contact" class="btn btn--sm btn--accent nav__cta" data-magnetic>Let’s talk</a>
+    <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#about"><span class="mono">01</span>About</a>
+    <a href="#work"><span class="mono">02</span>Work</a>
+    <a href="#dashboards"><span class="mono">03</span>Dashboards</a>
+    <a href="#live"><span class="mono">04</span>Live</a>
+    <a href="#contact"><span class="mono">05</span>Contact</a>
+  </nav>
+  <p class="menu__foot mono">Gujranwala, Pakistan · <span data-clock>--:--</span> PKT</p>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wall" id="wall" aria-hidden="true"></div>
+  <div class="wrap hero__content">
+    <p class="hero__kicker mono" data-hero style="--d:0"><span class="pulse"></span>Available for new projects · Gujranwala, PK</p>
+    <h1 class="hero__title" aria-label="I build the software real businesses run on.">
+      <span class="line" aria-hidden="true"><span class="w kin" style="--d:0">I</span> <span class="w kin" style="--d:1">build</span> <span class="w kin" style="--d:2">the</span></span>
+      <span class="line" aria-hidden="true"><span class="w kin" style="--d:3">software</span> <span class="w kin" style="--d:4">real</span></span>
+      <span class="line" aria-hidden="true"><span class="w kin" style="--d:5">businesses</span> <span class="w" style="--d:6"><em class="serif accent">run on.</em></span></span>
+    </h1>
+    <div class="hero__row">
+      <p class="hero__sub" data-hero style="--d:6">Apps, storefronts, custom dashboards and the servers behind them. <b>20 builds</b> — an app live on Google Play, stores live on the web, a dashboard with 19 themes. Everything behind me is real.</p>
+      <div class="hero__cta" data-hero style="--d:7">
+        <a class="btn btn--accent" href="#work" data-magnetic>See everything
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+        <a class="btn" href="#live" data-magnetic><span class="live-dot"></span>What’s live</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap hero__foot mono" data-hero style="--d:8">
+    <span>Flutter · Next.js · Node · Python</span>
+    <a href="#work" class="scrollcue">Scroll<span></span></a>
+    <span>Portfolio — 2026</span>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" role="img" aria-label="Technologies: Flutter, Next.js, TypeScript, Node.js, Prisma, PostgreSQL, Redis, Docker, Cloudflare R2, Shopify, Firebase, Python, OpenCV, MediaPipe">
+  <div class="marquee__track" aria-hidden="true">
+    <span>Flutter</span><i>✦</i><span class="serif">Next.js</span><i>✦</i><span>TypeScript</span><i>✦</i><span class="serif">Node.js</span><i>✦</i><span>Prisma</span><i>✦</i><span class="serif">PostgreSQL</span><i>✦</i><span>Redis</span><i>✦</i><span class="serif">Docker</span><i>✦</i><span>Cloudflare R2</span><i>✦</i><span class="serif">Shopify</span><i>✦</i><span>Firebase</span><i>✦</i><span class="serif">Python</span><i>✦</i><span>OpenCV</span><i>✦</i><span class="serif">MediaPipe</span><i>✦</i>
+    <span>Flutter</span><i>✦</i><span class="serif">Next.js</span><i>✦</i><span>TypeScript</span><i>✦</i><span class="serif">Node.js</span><i>✦</i><span>Prisma</span><i>✦</i><span class="serif">PostgreSQL</span><i>✦</i><span>Redis</span><i>✦</i><span class="serif">Docker</span><i>✦</i><span>Cloudflare R2</span><i>✦</i><span class="serif">Shopify</span><i>✦</i><span>Firebase</span><i>✦</i><span class="serif">Python</span><i>✦</i><span>OpenCV</span><i>✦</i><span class="serif">MediaPipe</span><i>✦</i>
+  </div>
+</div>
+
+<!-- ============ STATS ============ -->
+<section class="wrap stats" aria-label="In numbers">
+  <div class="stat" data-reveal style="--rd:0"><b><span data-count="20">0</span></b><span>Projects shown here, built end to end</span></div>
+  <div class="stat" data-reveal style="--rd:1"><b><span data-count="5">0</span></b><span>Live right now — app, dashboard, stores, café</span></div>
+  <div class="stat" data-reveal style="--rd:2"><b><span data-count="19">0</span></b><span>Themes in one custom dashboard</span></div>
+  <div class="stat" data-reveal style="--rd:3"><b><span data-count="4">0</span></b><span>Platforms shipped — Android, iOS, web, desktop</span></div>
+</section>
+
+<!-- ============ ABOUT ME ============ -->
+<section class="me" id="about">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="mono eyebrow">About me</p>
+        <h2 data-split>Hi, I’m Haider. <em class="serif">I build for real shops.</em></h2>
+      </div>
+      <span class="sec-head__n mono">Gujranwala · PK</span>
+    </header>
+
+    <div class="me__grid">
+      <aside class="me__card" data-reveal>
+        <div class="me__portrait"><img src="assets/me.webp" alt="Ali Haider Azam" width="720" height="900" loading="lazy" decoding="async"><i class="me__ring" aria-hidden="true"></i></div>
+        <div class="me__id">
+          <b>Ali Haider Azam</b>
+          <span>Full-time builder · leads KONO</span>
+          <span class="mono"><span class="live-dot"></span>Open to new projects</span>
+        </div>
+        <ul class="me__facts">
+          <li><span class="mono">Based in</span>Gujranwala, Pakistan</li>
+          <li><span class="mono">Local time</span><span><span data-clock>--:--</span> PKT</span></li>
+          <li><span class="mono">Focus</span>Apps · stores · dashboards</li>
+          <li><span class="mono">Studio</span>KONO — client work</li>
+          <li><span class="mono">Email</span><a href="mailto:alihaiderazamsajid@gmail.com">alihaiderazamsajid@gmail.com</a></li>
+          <li><span class="mono">WhatsApp</span><a href="https://wa.me/923076162544" target="_blank" rel="noopener">+92 307 6162544</a></li>
+        </ul>
+      </aside>
+
+      <div class="me__story">
+        <p class="me__lead" data-reveal>I build software for businesses, full-time — <b>apps, stores, dashboards</b> and the servers behind them. Most of what you see here is live and in daily use.</p>
+        <p data-reveal>I didn’t come from a software company — I learned by building for real businesses. For <b>Pakiza Mart</b>, a grocery in Gujranwala, I built the customer app, the dashboard the staff run the shop from, and the server between them. I secured it, got it through Google Play’s review and put it into production. The herbal store started on Shopify; today it runs on a platform I wrote myself.</p>
+        <p data-reveal>That’s still how I work: understand what the business actually needs, build the whole thing end to end, and treat it like it’s handling real money — because it is. Now I build the same for other businesses through <b>KONO</b> — from a surgeon’s bilingual website to a knife store selling worldwide.</p>
+        <div class="me__values" data-reveal>
+          <div><b>Business first</b><span>I think about stock, cash and customers — not just code.</span></div>
+          <div><b>End to end</b><span>App, website, dashboard, server, deploy. One person, no hand-offs.</span></div>
+          <div><b>Built to last</b><span>Backups, rollbacks and security checks — before launch, not after.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="me__time" data-reveal>
+      <p class="mono eyebrow">2026 so far</p>
+      <ol class="tl">
+        <li><span class="mono">May</span><b>First builds</b><p>Webcam experiments and a mobile app for the Veloura cap brand.</p></li>
+        <li><span class="mono">Jun</span><b>Pakiza Mart goes live</b><p>Grocery app, shop dashboard and API — running on my own server.</p></li>
+        <li><span class="mono">Jul</span><b>Approved by Google Play</b><p>12 testers, 14 days, then production access.</p></li>
+        <li><span class="mono">Aug</span><b>Brands &amp; clients</b><p>Veloura’s storefront and Dr Violeta’s clinic website through KONO.</p></li>
+        <li><span class="mono">Sep</span><b>REVE &amp; this site</b><p>An intimates brand for Pakistan — and the portfolio you’re reading.</p></li>
+      </ol>
+    </div>
+
+    <div class="now" data-reveal>
+      <p class="mono eyebrow">Right now</p>
+      <ul>
+        <li><span class="pulse"></span>Building <b>REVE</b> — an intimates brand for Pakistan</li>
+        <li><span class="pulse"></span>Taking <b>Pakiza Mart</b> to the App Store</li>
+        <li><span class="pulse"></span>Animating <b>Veloura</b>’s storefront</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="work" id="work">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="mono eyebrow">Everything I’ve built</p>
+        <h2 data-split>The whole <em class="serif">workshop.</em></h2>
+      </div>
+      <span class="sec-head__n mono" id="workCount">(20)</span>
+    </header>
+    <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARDS ============ -->
+<section class="dsh-sec" id="dashboards">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="mono eyebrow">Dashboards, but not boring</p>
+        <h2 data-split>One dashboard. <em class="serif">Nineteen personalities.</em></h2>
+      </div>
+      <span class="sec-head__n mono">(19)</span>
+    </header>
+
+    <div class="dsh" id="dsh">
+      <div class="dsh__main" data-reveal>
+        <div class="dsh__frame">
+          <div class="bar"><i></i><i></i><i></i><span class="url"><span class="live-dot"></span>admin.pakizawp.cloud/<b id="dshPath">dashboard</b></span><span class="dsh__theme mono" id="dshThemeName">Batman theme</span></div>
+          <div class="dsh__view" id="dshView" role="img" aria-label="The Pakiza admin dashboard, shown in the selected theme"></div>
+        </div>
+        <div class="dsh__themes" id="dshThemes" role="radiogroup" aria-label="Choose a dashboard theme"></div>
+      </div>
+      <aside class="dsh__side" data-reveal style="--rd:1">
+        <div class="dsh__stats">
+          <div><b>19</b><span>themes, from Light to Batman</span></div>
+          <div><b>22+</b><span>screens that run a real shop</span></div>
+          <div><b>25</b><span>modules with their own permissions</span></div>
+          <div><b class="live"><span class="live-dot"></span>Live</b><span>admin.pakizawp.cloud</span></div>
+        </div>
+        <ul class="dsh__feats">
+          <li><b>Themes that rename everything</b>Not just colours. In Batman, riders become “Knights of Gotham”, the map is the “Bat-Signal Map” and the shop is “The Batcave”.</li>
+          <li><b>Orders ring in</b>A bell, a toast and a sound the moment an app order lands — confetti for the day’s first.</li>
+          <li><b>Riders, tracked live</b>Vehicles, delivery zones, a rider leaderboard, payouts and an audit trail.</li>
+          <li><b>Stock that adds up</b>Stock ledger, purchase orders, suppliers, low-stock alerts and returns.</li>
+          <li><b>Everyone sees only their part</b>Custom roles with a tick-grid across 25 modules.</li>
+        </ul>
+        <div class="dsh__btns">
+          <button class="btn btn--accent btn--sm" type="button" data-open="pakiza-admin">Full case study</button>
+        </div>
+      </aside>
+    </div>
+
+    <p class="mono dsh__label">Every screen — tap one to open it above ↑</p>
+    <div class="dsh__pages" id="dshPages"></div>
+
+    <div class="dsh__more">
+      <p class="mono eyebrow">More dashboards I’ve built</p>
+      <div class="more-grid">
+        <button class="mcard" type="button" data-open="veloura" style="--mc:#4A1320">
+          <span class="mcard__side" aria-hidden="true"><i>Dashboard</i><i>Orders</i><i>Inventory</i><i>Ledger</i><i>Reconcile</i><i>Analytics</i><i>Reviews</i><i>Audit</i></span>
+          <span><span class="mono">Veloura · admin console</span><h4>Built like an accounting system</h4><p>Orders move through one audited door, stock is an append-only ledger with reconciliation, and an analytics engine tracks every drop.</p></span>
+        </button>
+        <button class="mcard" type="button" data-open="ahk" style="--mc:#2B2620">
+          <span class="mcard__side" aria-hidden="true"><i>Products</i><i>Categories</i><i>Orders</i><i>Customers</i><i>Reviews</i><i>Banners</i><i>Content</i></span>
+          <span><span class="mono">A&amp;H Knives · store admin</span><h4>Runs a worldwide store</h4><p>Products, orders, customers, reviews, homepage banners and site content — for a live international shop.</p></span>
+        </button>
+        <button class="mcard" type="button" data-open="umar" style="--mc:#2D5C73">
+          <span class="mcard__side" aria-hidden="true"><i>Analytics</i><i>Invoices</i><i>Customers</i><i>Products</i><i>Inquiries</i><i>Projects</i><i>Media</i></span>
+          <span><span class="mono">Umar Sanitary · business admin</span><h4>Invoices to analytics</h4><p>Printable invoices, customer records, enquiries, projects and sales analytics for a tiles business.</p></span>
+        </button>
+        <button class="mcard" type="button" data-open="reve" style="--mc:#7A1E2B">
+          <span class="mcard__side" aria-hidden="true"><i>Products</i><i>Variants</i><i>Orders</i><i>Reviews</i></span>
+          <span><span class="mono">REVE · store admin</span><h4>Sizes without the headache</h4><p>Products with a full band-and-cup variant matrix, orders and reviews for an intimates brand.</p></span>
+        </button>
+        <button class="mcard" type="button" data-open="velvet" style="--mc:#6A1B2B">
+          <span class="mcard__side" aria-hidden="true"><i>Today</i><i>Orders</i><i>Bulk</i><i>Stock</i><i>Sales</i></span>
+          <span><span class="mono">Velvet Edge · owner dashboard</span><h4>A factory at a glance</h4><p>Orders, bulk enquiries, stock and sales for a Sialkot workshop — opens with a double-click.</p></span>
+        </button>
+        <button class="mcard" type="button" data-open="cashclose" style="--mc:#1E4E8C">
+          <span class="mcard__side" aria-hidden="true"><i>Count</i><i>Card</i><i>Online</i><i>Difference</i><i>History</i></span>
+          <span><span class="mono">Shift Close · till tool</span><h4>End-of-shift in a minute</h4><p>Count the notes, match the sales, see the difference, keep the history.</p></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE (slides) ============ -->
+<section class="play" id="live">
+  <div class="wrap play__head">
+    <header class="sec-head">
+      <div>
+        <p class="mono eyebrow"><span class="live-dot"></span>Live right now</p>
+        <h2 data-split>Out in the world, <em class="serif">running.</em></h2>
+      </div>
+      <span class="sec-head__n mono">(<span id="playNow">01</span> / 08)</span>
+    </header>
+  </div>
+  <div class="play__pin" id="playPin">
+    <div class="play__track" id="playTrack">
+
+      <!-- 1. Pakiza Mart app — live on Google Play -->
+      <article class="panel" style="--pc:#0B2F1F;--pf:#F4EFDD">
+        <div class="panel__info">
+          <span class="mono live-tag"><i></i>Live · Google Play</span>
+          <h3>Pakiza Mart. <em class="serif">Order in the app, ring in the shop.</em></h3>
+          <p>A neighbourhood grocery’s own app. A customer taps “Place order”, it flies to my server, and the shop dashboard rings. That’s the real system, running.</p>
+          <ul class="panel__feats">
+            <li>60+ categories, 1000+ products, cash on delivery</li>
+            <li>Delivery slots, promo codes, order tracking</li>
+            <li>Android live · iOS built · light + dark</li>
+          </ul>
+          <div class="panel__btns"><a class="btn btn--sm btn--light" href="https://play.google.com/store/apps/details?id=com.pakizamart.pakiza_mart" target="_blank" rel="noopener">Get it on Google Play ↗</a></div>
+        </div>
+        <div class="panel__stage">
+          <div class="flow" id="flow">
+            <div class="flow__stage" id="flowStage" role="img" aria-label="Animation: an order placed in the Pakiza Mart app travels to the admin dashboard, which rings and assigns a rider.">
+              <div class="phone">
+                <div class="phone__notch"></div>
+                <div class="phone__screen">
+                  <div class="ph-top"><img src="assets/pakiza-logo.webp" alt="" width="22" height="22"><span class="ph-title">Your cart</span><span class="ph-count" id="phCount">3 items</span></div>
+                  <ul class="ph-items" id="phItems"></ul>
+                  <div class="ph-sum"><div><span>Delivery</span><span id="phFee">Rs 200</span></div><div class="ph-total"><span>Total</span><b id="phTotal">Rs 1,240</b></div></div>
+                  <div class="ph-btn" id="phBtn">Place order · Cash on delivery</div>
+                  <div class="ph-done" id="phDone">
+                    <div class="ph-check"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+                    <b>Order placed!</b><small>Shukriya — it’s on its way.</small><span class="mono" id="phOrderNo">PM-5006</span>
+                  </div>
+                </div>
+              </div>
+              <svg class="flow__wire" viewBox="0 0 560 440" aria-hidden="true">
+                <path id="wireBase" d="M196 352 C 250 352, 232 150, 282 128"/>
+                <path id="wireGlow" class="glow" d="M196 352 C 250 352, 232 150, 282 128"/>
+              </svg>
+              <div class="packet" id="packet"><span id="packetNo">PM-5006</span></div>
+              <div class="dash">
+                <div class="dash__bar"><span class="dots"><i></i><i></i><i></i></span><span class="dash__url mono">admin.pakizawp.cloud/orders</span></div>
+                <div class="dash__head"><b>Orders</b>
+                  <span class="bell" id="bell"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg><sup id="bellCount">0</sup></span>
+                </div>
+                <div class="dash__cols mono"><span>Order</span><span>Customer</span><span>Total</span><span>Status</span></div>
+                <div class="dash__rows" id="dashRows"></div>
+                <div class="toast" id="toast"><i></i><span>New order <b id="toastNo">PM-5006</b> · <span id="toastAmt">Rs 1,240</span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="panel__num" aria-hidden="true">01</span>
+      </article>
+
+      <!-- 2. A&H Knives — live -->
+      <article class="panel panel--site" style="--pc:#16120E;--pf:#F4EEE6">
+        <div class="panel__info">
+          <span class="mono live-tag"><i></i>Live · ahknives.com</span>
+          <h3>A&amp;H Knives. <em class="serif">Damascus steel, shipped worldwide.</em></h3>
+          <p>An international store for knives, swords and blades — catalogue, buying guides, customer accounts and its own admin, with safe card checkout.</p>
+          <ul class="panel__feats">
+            <li>Selling worldwide at ahknives.com</li>
+            <li>SEO buying guides — Damascus steel, blade care</li>
+            <li>Whole site rebrands from one config file</li>
+          </ul>
+          <div class="panel__btns"><a class="btn btn--sm btn--light" href="https://ahknives.com" target="_blank" rel="noopener">Visit ahknives.com ↗</a><button class="btn btn--sm btn--light" type="button" data-open="ahk">Details</button></div>
+        </div>
+        <div class="panel__stage">
+          <div class="site">
+            <div class="site__browser"><div class="bar"><i></i><i></i><i></i><span class="url">ahknives.com</span></div><div class="view"><img class="pan" src="assets/tiles/live-ahk-home-d.webp" alt="ahknives.com, live" loading="lazy" decoding="async"></div></div>
+            <div class="site__phone"><div class="view"><img class="pan" src="assets/tiles/live-ahk-home-m.webp" alt="" loading="lazy" decoding="async"></div></div>
+            <div class="site__tabs" role="tablist" aria-label="ahknives.com pages">
+              <button role="tab" type="button" aria-selected="true" class="is-on" data-d="assets/tiles/live-ahk-home-d.webp" data-m="assets/tiles/live-ahk-home-m.webp" data-url="ahknives.com">Home</button>
+              <button role="tab" type="button" aria-selected="false" data-d="assets/tiles/live-ahk-shop-d.webp" data-url="ahknives.com/shop">Shop</button>
+              <button role="tab" type="button" aria-selected="false" data-d="assets/tiles/live-ahk-product-d.webp" data-m="assets/tiles/live-ahk-product-m.webp" data-url="ahknives.com/products">Product</button>
+              <button role="tab" type="button" aria-selected="false" data-d="assets/tiles/live-ahk-guide-d.webp" data-url="ahknives.com/guides">Guide</button>
+            </div>
+          </div>
+        </div>
+        <span class="panel__num" aria-hidden="true">02</span>
+      </article>
+
+      <!-- 3. Pakiza Duakhana — live -->
+      <article class="panel panel--site" style="--pc:#1F2A12;--pf:#F2EEDC">
+        <div class="panel__info">
+          <span class="mono live-tag"><i></i>Live · pakizaduakhana.com</span>
+          <h3>Pakiza Duakhana. <em class="serif">Herbal remedies, delivered.</em></h3>
+          <p>A herbal-medicine store, selling across Pakistan with cash on delivery — running on my own commerce platform, not a template.</p>
+          <ul class="panel__feats">
+            <li>My own Node + PostgreSQL + Redis platform</li>
+            <li>Guest checkout, WhatsApp ordering, “ask the hakeem”</li>
+            <li>Analytics admin · started on Shopify, moved to mine</li>
+          </ul>
+          <div class="panel__btns"><a class="btn btn--sm btn--light" href="https://pakizaduakhana.com" target="_blank" rel="noopener">Visit the store ↗</a><button class="btn btn--sm btn--light" type="button" data-open="duakhana">Details</button></div>
+        </div>
+        <div class="panel__stage">
+          <div class="site">
+            <div class="site__browser"><div class="bar"><i></i><i></i><i></i><span class="url">pakizaduakhana.com</span></div><div class="view"><img class="pan" src="assets/tiles/live-duakhana-home-d.webp" alt="pakizaduakhana.com, live" loading="lazy" decoding="async"></div></div>
+            <div class="site__phone"><div class="view"><img class="pan" src="assets/tiles/live-duakhana-home-m.webp" alt="" loading="lazy" decoding="async"></div></div>
+            <div class="site__tabs" role="tablist" aria-label="pakizaduakhana.com pages">
+              <button role="tab" type="button" aria-selected="true" class="is-on" data-d="assets/tiles/live-duakhana-home-d.webp" data-m="assets/tiles/live-duakhana-home-m.webp" data-url="pakizaduakhana.com">Home</button>
+              <button role="tab" type="button" aria-selected="false" data-d="assets/tiles/live-duakhana-collection-d.webp" data-url="pakizaduakhana.com/category/digestive-general-health">Category</button>
+              <button role="tab" type="button" aria-selected="false" data-d="assets/tiles/live-duakhana-product-d.webp" data-m="assets/tiles/live-duakhana-product-m.webp" data-url="pakizaduakhana.com/product/choti-makhi-honey">Product</button>
+            </div>
+          </div>
+        </div>
+        <span class="panel__num" aria-hidden="true">03</span>
+      </article>
+
+      <!-- 4. The Bareeqs — live -->
+      <article class="panel panel--site" style="--pc:#1E130B;--pf:#F6E9D8">
+        <div class="panel__info">
+          <span class="mono live-tag"><i></i>Live · private</span>
+          <h3>The Bareeqs. <em class="serif">A café for four, behind one phrase.</em></h3>
+          <p>A candle-lit online hangout for four friends. Speak the phrase at the door and you’re in — no signup, no email, no user table.</p>
+          <div class="panel__rooms"><span>The hall</span><span>The counter</span><span>The snug</span><span>Library</span><span>Ludo</span><span>Votes</span><span>Ledger</span><span>Hall of fame</span><span>Achievements</span></div>
+          <div class="panel__btns"><button class="btn btn--sm btn--light" type="button" data-open="bareeqs">Details</button></div>
+        </div>
+        <div class="panel__stage">
+          <div class="site">
+            <div class="site__browser"><div class="bar"><i></i><i></i><i></i><span class="url">the-bareeqs · the door</span></div><div class="view"><img class="pan" src="assets/tiles/bareeqs-gate-d.webp" alt="The Bareeqs café door" loading="lazy" decoding="async"></div></div>
+            <div class="site__phone"><div class="view"><img class="pan" src="assets/tiles/bareeqs-gate-m.webp" alt="" loading="lazy" decoding="async"></div></div>
+          </div>
+        </div>
+        <span class="panel__num" aria-hidden="true">04</span>
+      </article>
+
+      <!-- 5. Veloura — cap brand website -->
+      <article class="panel panel--site" style="--pc:#2A0A12;--pf:#F7ECE5">
+        <div class="panel__info">
+          <span class="mono">05 · Brand website</span>
+          <h3>Veloura. <em class="serif">A cap brand that tells its story first.</em></h3>
+          <p>A story-first website for a two-person Pakistani cap label: the story, the craft, the drop — then a shop that feels like the brand. With a full admin console behind it.</p>
+          <ul class="panel__feats">
+            <li>Home, Story and Craft pages built around the brand</li>
+            <li>Hand-built scroll animation engine</li>
+            <li>Forensic-grade admin + a companion mobile app</li>
+          </ul>
+          <div class="panel__btns"><button class="btn btn--sm btn--light" type="button" data-open="veloura">Details</button></div>
+        </div>
+        <div class="panel__stage">
+          <div class="site">
+            <div class="site__browser"><div class="bar"><i></i><i></i><i></i><span class="url">veloura</span></div><div class="view"><img class="pan" src="assets/tiles/veloura-home-d.webp" alt="Veloura brand website" loading="lazy" decoding="async"></div></div>
+            <div class="site__phone"><div class="view"><img class="pan" src="assets/tiles/veloura-home-m.webp" alt="" loading="lazy" decoding="async"></div></div>
+            <div class="site__tabs" role="tablist" aria-label="Veloura pages">
+              <button role="tab" type="button" aria-selected="true" class="is-on" data-d="assets/tiles/veloura-home-d.webp" data-m="assets/tiles/veloura-home-m.webp" data-url="veloura">Home</button>
+              <button role="tab" type="button" aria-selected="false" data-d="assets/tiles/veloura-story-d.webp" data-url="veloura/story">Story</button>
+              <button role="tab" type="button" aria-selected="false" data-d="assets/tiles/veloura-craft-d.webp" data-url="veloura/craft">Craft</button>
+              <button role="tab" type="button" aria-selected="false" data-d="assets/tiles/veloura-shop-d.webp" data-url="veloura/shop">Shop</button>
+              <button role="tab" type="button" aria-selected="false" data-d="assets/tiles/veloura-product-d.webp" data-m="assets/tiles/veloura-product-m.webp" data-url="veloura/shop/…">Product</button>
+            </div>
+          </div>
+        </div>
+        <span class="panel__num" aria-hidden="true">05</span>
+      </article>
+
+      <!-- 6. Sober Review sunrise -->
+      <article class="panel" style="--pc:#0E0F26;--pf:#ECEBFF">
+        <div class="panel__info">
+          <span class="mono">06 · Sober Review</span>
+          <h3>Genius at 2 a.m. <em class="serif">Judged at 9.</em></h3>
+          <p>Ideas are recorded in a night of stars, then judged in harsh morning light. The 1.6-second sunrise between them is the whole idea.</p>
+          <div class="panel__btns"><button class="btn btn--sm btn--light" id="sunBtn" type="button">Make the sun rise ☀</button></div>
+          <span class="hint">Tap the sky</span>
+        </div>
+        <div class="panel__stage">
+          <div class="sky" id="sky" role="img" aria-label="Night sky with an idea card that turns into a morning review card at sunrise">
+            <div class="sky__stars"></div><div class="sky__moon"></div><div class="sky__sun"></div><div class="sky__hills"></div>
+            <div class="idea idea--night"><span class="mono">02:14 · Voice note</span><p>“An app that judges my ideas… while I sleep.”</p>
+              <div class="wave"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i></div></div>
+            <div class="idea idea--day"><span class="mono">09:02 · Sober review</span><p>“An app that judges my ideas… while I sleep.”</p><div class="verdict"><span>✕ Bin</span><span>✓ Keep</span></div></div>
+            <span class="sky__time mono"></span>
+          </div>
+        </div>
+        <span class="panel__num" aria-hidden="true">06</span>
+      </article>
+
+      <!-- 7. Walkie-talkie -->
+      <article class="panel" style="--pc:#0B241D;--pf:#DFF7EE">
+        <div class="panel__info">
+          <span class="mono">07 · Walkie-talkie</span>
+          <h3>Hold. <em class="serif">Talk. Your friends hear it.</em></h3>
+          <p>Private push-to-talk radio in the browser. Voice travels phone-to-phone and never touches the server — no accounts, no database.</p>
+          <span class="hint">Press and hold the button</span>
+        </div>
+        <div class="panel__stage">
+          <div class="radio" id="radio">
+            <div class="radio__meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="radio__pin mono" aria-label="Room PIN"><span>4</span><span>2</span><span>0</span><span>7</span></div>
+            <div class="radio__rings" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i></div>
+            <button class="ptt" type="button" aria-pressed="false"><span id="pttLabel">Hold to talk</span><small>peer-to-peer</small></button>
+            <div class="radio__peers" aria-hidden="true"><span class="peer"><b>A</b>Ali</span><span class="peer"><b>S</b>Sana</span><span class="peer"><b>U</b>Umar</span><span class="peer"><b>H</b>Hira</span></div>
+          </div>
+        </div>
+        <span class="panel__num" aria-hidden="true">07</span>
+      </article>
+
+      <!-- 8. leaner -->
+      <article class="panel" style="--pc:#EFE7D8;--pf:#1d1b16">
+        <div class="panel__info">
+          <span class="mono">08 · leaner</span>
+          <h3>A spell-checker <em class="serif">for code.</em></h3>
+          <p>One file, zero dependencies. It reads your project, points out the bloat, the bugs and the leaks — then tidies them away.</p>
+          <span class="hint">Watch nine lines become one</span>
+        </div>
+        <div class="panel__stage">
+          <div class="lean" id="lean">
+            <div class="lean__bar"><span class="mono">leaner — scanning user.js</span><span class="lean__score" id="leanScore">bloat: –</span></div>
+            <pre><span class="ln" data-cut="1">function getUserName(user) {</span><span class="ln" data-cut="1" data-why="restates the code">  // get the name of the user</span><span class="ln" data-cut="1" data-why="needless temp">  const name = user.name;</span><span class="ln" data-cut="1" data-why="use ??">  if (name !== undefined &amp;&amp; name !== null) {</span><span class="ln" data-cut="1">    return name;</span><span class="ln" data-cut="1" data-why="else after return">  } else {</span><span class="ln" data-cut="1">    return null;</span><span class="ln" data-cut="1">  }</span><span class="ln" data-cut="1">}</span><span class="ln gone" id="leanFixed" style="color:#1C8A4E;font-weight:500">const getUserName = (user) =&gt; user.name ?? null;</span></pre>
+          </div>
+        </div>
+        <span class="panel__num" aria-hidden="true">08</span>
+      </article>
+
+    </div>
+  </div>
+  <div class="wrap"><div class="play__bar"><i id="playBar"></i></div></div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="principles" id="principles">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="mono eyebrow">How I build</p>
+        <h2 data-split>Rules I learned <em class="serif">by shipping.</em></h2>
+      </div>
+      <span class="sec-head__n mono">(04)</span>
+    </header>
+    <div class="rules">
+      <article class="rule" data-reveal style="--rd:0">
+        <span class="mono">01 — Pakiza Mart API</span>
+        <h3>Never trust the <em class="serif">price the app sends.</em></h3>
+        <p>Every order total is recalculated on the server from real database prices. A tampered app can’t buy a Rs 3,000 basket for Rs 30.</p>
+        <span class="rule__big" aria-hidden="true">01</span>
+      </article>
+      <article class="rule" data-reveal style="--rd:1">
+        <span class="mono">02 — Veloura</span>
+        <h3>Make the wrong thing <em class="serif">impossible.</em></h3>
+        <p>Instead of a rule that says “don’t edit orders directly”, the ability simply doesn’t exist in the code. Conventions get forgotten. Types don’t.</p>
+        <span class="rule__big" aria-hidden="true">02</span>
+      </article>
+      <article class="rule" data-reveal style="--rd:0">
+        <span class="mono">03 — migration-engine</span>
+        <h3>A loud failure beats <em class="serif">a quiet success.</em></h3>
+        <p>Anything unfinished throws an error instead of pretending it worked. Silent data loss is the only unforgivable bug.</p>
+        <span class="rule__big" aria-hidden="true">03</span>
+      </article>
+      <article class="rule" data-reveal style="--rd:1">
+        <span class="mono">04 — Every deploy</span>
+        <h3>Always ship with <em class="serif">an undo button.</em></h3>
+        <p>Before anything goes live, the database is backed up and the running version is saved. If the smoke test fails, one command puts it all back.</p>
+        <div class="pipe" aria-label="Deploy pipeline: backup, snapshot, deploy, smoke test, live"><span>Backup</span><i></i><span>Snapshot</span><i></i><span>Deploy</span><i></i><span>Smoke test</span><i></i><span>Live ✓</span></div>
+        <span class="rule__big" aria-hidden="true">04</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="wrap services" id="services">
+  <header class="sec-head">
+    <div>
+      <p class="mono eyebrow">Services</p>
+      <h2 data-split>What I can build <em class="serif">for you.</em></h2>
+    </div>
+    <span class="sec-head__n mono">(06)</span>
+  </header>
+  <ol class="svc">
+    <li data-reveal><span class="mono">01</span><h3>Mobile apps</h3><p>Flutter apps for Android and iOS — designed, built and published to the stores.</p><span class="go" aria-hidden="true">↗</span></li>
+    <li data-reveal><span class="mono">02</span><h3>E-commerce</h3><p>Shopify setup and SEO, or a fully custom storefront with cash-on-delivery checkout.</p><span class="go" aria-hidden="true">↗</span></li>
+    <li data-reveal><span class="mono">03</span><h3>Dashboards</h3><p>Custom admin panels your team enjoys using — themes, roles, live alerts, reports.</p><span class="go" aria-hidden="true">↗</span></li>
+    <li data-reveal><span class="mono">04</span><h3>Backend APIs</h3><p>Node servers with real authentication, rate limiting and security audits.</p><span class="go" aria-hidden="true">↗</span></li>
+    <li data-reveal><span class="mono">05</span><h3>Websites</h3><p>Fast, brandable sites that feel premium even on a mid-range phone on mobile data.</p><span class="go" aria-hidden="true">↗</span></li>
+    <li data-reveal><span class="mono">06</span><h3>Deploy &amp; hosting</h3><p>Docker, your own server, HTTPS, backups and one-command rollback. It stays up.</p><span class="go" aria-hidden="true">↗</span></li>
+  </ol>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="orbit" id="orbit" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="mono eyebrow" data-reveal>Have something in mind?</p>
+    <h2 class="contact__title" data-split>Let’s build the thing your business <em class="serif accent">runs on.</em></h2>
+    <div data-reveal>
+      <a class="contact__mail" href="mailto:alihaiderazamsajid@gmail.com" data-magnetic>alihaiderazamsajid@gmail.com</a>
+      <div class="contact__btns">
+        <a class="btn btn--wa" href="https://wa.me/923076162544?text=Assalam%20o%20Alaikum%20Haider!%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" data-magnetic>WhatsApp me ↗</a>
+        <button class="btn" id="copyBtn" type="button" data-email="alihaiderazamsajid@gmail.com">Copy email</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__row mono">
+    <span>© 2026 Ali Haider Azam · KONO</span>
+    <span>Gujranwala, Pakistan · <span data-clock>--:--</span> PKT</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+  <div class="foot__big" aria-hidden="true"><span class="kin">Haider</span><span class="serif">.</span></div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a class="wa-float" href="https://wa.me/923076162544?text=Assalam%20o%20Alaikum%20Haider!%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" aria-label="Chat with me on WhatsApp">
+  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.8-3.8-1.8-5.9C5 10 9.9 5.2 16 5.2S27 10 27 15.9c0 5.9-4.9 10.5-11 10.5zm6-7.9c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1.1-2.6c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 2-.8 2.2-1.6.3-.8.3-1.4.2-1.6-.1-.1-.3-.2-.6-.4z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<!-- ============ CASE VIEWER ============ -->
+<div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="caseTitle" aria-hidden="true">
+  <div class="case__bg"></div>
+  <div class="case__panel">
+    <!-- data-lenis-prevent: let these panels scroll natively while the page's smooth-scroll is paused -->
+    <aside class="case__info" data-lenis-prevent></aside>
+    <div class="case__media" data-lenis-prevent><div class="case__media-inner"></div></div>
+  </div>
+</div>
+
+<!-- Animation libraries are kept inside the site (GSAP 3.12.5, Lenis 1.1.13) so a slow CDN can never stall the page -->
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
+<script src="data.js?v=10" defer></script>
+<script src="main.js?v=7" defer></script>
+</body>
+</html>
