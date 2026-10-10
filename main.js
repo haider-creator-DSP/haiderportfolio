@@ -410,8 +410,8 @@
     ['dash', 'Dashboards'], ['tool', 'Tools & AI'], ['lab', 'Experiments'],
   ];
   const bar = url => `<div class="bar"><i></i><i></i><i></i><span class="url">${esc(url || '')}</span></div>`;
-  const browser = (src, url, cls = '') =>
-    `<div class="frame frame--browser ${cls}">${bar(url)}<div class="view"><img class="pan" src="${src}" alt="" loading="lazy" decoding="async"></div></div>`;
+  const browser = (src, url, cls = '', alt = '') =>
+    `<div class="frame frame--browser ${cls}">${bar(url)}<div class="view"><img class="pan" src="${src}" alt="${esc(alt)}" loading="lazy" decoding="async"></div></div>`;
   const phone = (src, cls = '', pan = true) =>
     `<div class="frame frame--phone ${cls}"><div class="view"><img${pan ? ' class="pan"' : ''} src="${src}" alt="" loading="lazy" decoding="async"></div></div>`;
   const stars = n => Array.from({ length: n }, (_, i) =>
@@ -422,7 +422,7 @@
   function cover(p) {
     const c = p.cover || {};
     switch (c.type) {
-      case 'browser': return browser(small(c.d), p.url) + (c.m ? phone(small(c.m)) : '');
+      case 'browser': return browser(small(c.d), p.url, '', `${p.name} — ${p.kind}, screenshot`) + (c.m ? phone(small(c.m)) : '');
       case 'phones': return `<div class="fanned">${c.phones.map(s => phone(s, '', false)).join('')}</div>`;
       case 'phone': return phone(small(c.m), 'solo');
       case 'video': return `<div class="frame frame--browser frame--video">${bar(p.url)}<div class="view"><video muted loop playsinline preload="none" poster="${c.poster}" src="${c.video}"></video></div></div>`;
@@ -1065,7 +1065,7 @@
     dock.innerHTML = D.themes.map((t, i) =>
       `<button type="button" role="radio" aria-checked="false" data-i="${i}" style="--tc:${t.color}"><span aria-hidden="true">${t.icon}</span>${esc(t.label)}</button>`).join('');
     pagesEl.innerHTML = D.pages.map((p, i) =>
-      `<button type="button" class="pg" data-p="${i}"><span class="pg__img"><img src="${p.thumb}" alt="" loading="lazy" decoding="async"></span><span class="pg__label">${esc(p.label)}</span></button>`).join('');
+      `<button type="button" class="pg" data-p="${i}"><span class="pg__img"><img src="${p.thumb}" alt="Pakiza admin dashboard — ${esc(p.label)} screen" loading="lazy" decoding="async"></span><span class="pg__label">${esc(p.label)}</span></button>`).join('');
 
     // Show a screenshot: the new one is revealed with a circular wipe from (x, y), then the old one is dropped.
     const show = (src, x, y) => {

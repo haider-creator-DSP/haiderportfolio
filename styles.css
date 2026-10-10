@@ -867,6 +867,17 @@ html:not(.js) [data-reveal],html:not(.js) .split .ch{opacity:1;transform:none}
   .quiz-pill span{display:none}
 }
 
+/* ---------- index of work (plain, crawlable list) ---------- */
+.windex{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.windex li{padding:20px 20px 20px 0;border-bottom:1px solid var(--line);display:grid;gap:5px;align-content:start}
+.windex button{justify-self:start;text-align:left;font-size:21px;font-weight:500;letter-spacing:-.03em;line-height:1.15;transition:color .3s}
+.windex button:hover{color:var(--accent)}
+.windex .mono{color:var(--faint)}
+.windex p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.45;max-width:38ch}
+.windex a{justify-self:start;font-size:14px;color:var(--text);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){.windex{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.windex{grid-template-columns:minmax(0,1fr)}.windex li{padding-right:0}}
+
 /* ---------- responsive ---------- */
 @media (max-width:1100px){
   .tile,.tile--half{grid-column:span 6}
