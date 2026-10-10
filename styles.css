@@ -762,7 +762,7 @@ html:not(.js) [data-reveal],html:not(.js) .split .ch{opacity:1;transform:none}
 .me__values b{display:block;font-weight:500}
 .me__values span{display:block;margin-top:4px;color:var(--muted);font-size:14px;line-height:1.45}
 .me__time{margin-top:clamp(50px,6vw,90px)}
-.tl{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line-2)}
+.tl{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line-2)}
 .tl li{position:relative;padding:24px 18px 0 0}
 .tl li::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg)}
 .tl .mono{color:var(--accent)}
