@@ -19,7 +19,7 @@
 (function () {
   'use strict';
 
-  var PIXEL_ID = ''; // ← paste your TikTok Pixel ID here
+  var PIXEL_ID = 'DB4QGQJC77U074LG1RCG'; // TikTok Pixel ID (TikTok Ads Manager → Tools → Events)
 
   if (!PIXEL_ID) return;
 
