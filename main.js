@@ -1237,8 +1237,10 @@
       const phone = field('phone').value.trim();
       const need = (form.querySelector('input[name="need"]:checked') || {}).value || '';
       const details = field('details').value.trim();
+      const email = field('email').value.trim();
       if (name.length < 2) return bad(field('name'), 'Please add your name.');
       if (phone.replace(/\D/g, '').length < 10) return bad(field('phone'), 'Please add your WhatsApp number, with all its digits.');
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad(field('email'), 'That email doesn’t look right — fix it or leave it empty.');
       if (!need) return bad(null, 'Please pick what you need — or choose “Something else”.');
       bad(null, '');
       const lines = ['Assalam o Alaikum Haider!', `I’m ${name}.`, `I need: ${need}.`];
@@ -1248,6 +1250,8 @@
       const url = `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
       // tell the TikTok pixel (pixel.js listens for this); only the chosen category is shared, never the name or number
       document.dispatchEvent(new CustomEvent('lead:submit', { detail: { need } }));
+      // tracker.js saves these to my private dashboard so I can reply; they go nowhere else
+      document.dispatchEvent(new CustomEvent('lead:data', { detail: { source: 'lead form', name, phone, email, need, message: details } }));
       $('#leadName').textContent = ', ' + name.split(' ')[0];
       $('#leadAgain').href = url;
       $('#leadMail').href = `mailto:${MAIL}?subject=${encodeURIComponent('New project — ' + name)}&body=${encodeURIComponent(text)}`;
@@ -1296,10 +1300,12 @@
       <ul class="quiz__list">${o.bullets.map(b => `<li>${esc(b)}</li>`).join('')}</ul>
       ${p ? `<div class="quiz__proof">${img ? `<img src="${img}" alt="" loading="lazy" decoding="async">` : '<span></span>'}<div><span class="mono">I’ve done this</span><b>${esc(p.name)}</b>${esc(o.proofLine)}</div></div>` : ''}
       <form class="quiz__form" data-seg="${o.id}" novalidate>
+        <label class="field"><span>Your WhatsApp number</span><input type="tel" name="phone" maxlength="20" autocomplete="tel" inputmode="tel" required placeholder="e.g. 0300 1234567"></label>
         <label class="field"><span>Your name <i>(optional)</i></span><input type="text" name="name" maxlength="60" autocomplete="name" placeholder="e.g. Ahmed Khan"></label>
+        <p class="lead__error" role="alert" hidden></p>
         <button class="btn btn--wa" type="submit">${esc(o.cta)} on WhatsApp ↗</button>
       </form>
-      <p class="quiz__foot mono">Opens WhatsApp with a ready message · free, no obligation</p>`;
+      <p class="quiz__foot mono">Opens WhatsApp with a ready message · free, no obligation · your number is saved only so I can reply</p>`;
     };
     const stepDone = (name, url) => `
       <p class="mono eyebrow">Almost done</p>
@@ -1348,6 +1354,12 @@
       const o = offer[e.target.dataset.seg];
       if (!o) return;
       const name = e.target.elements.name.value.trim().replace(/\s+/g, ' ');
+      const tel = e.target.elements.phone, phone = tel.value.trim(), err = $('.lead__error', e.target);
+      const short = phone.replace(/\D/g, '').length < 10;
+      tel.closest('.field').classList.toggle('is-bad', short);
+      err.textContent = short ? 'Please add your WhatsApp number, with all its digits.' : ''; err.hidden = !short;
+      if (short) return tel.focus();
+      document.dispatchEvent(new CustomEvent('lead:data', { detail: { source: 'popup', name, phone, email: '', need: o.label, message: 'Wants: ' + o.offer } }));
       const lines = ['Assalam o Alaikum Haider!'];
       if (name) lines.push(`I’m ${name}.`);
       lines.push(o.label + '.', `I’d like ${o.offer}.`, '(From haiderportfolio.online)');

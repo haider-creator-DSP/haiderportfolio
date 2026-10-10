@@ -44,7 +44,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <!-- ?v= numbers force browsers to fetch fresh files after an update; bump them when you change a file -->
-<link rel="stylesheet" href="styles.css?v=16">
+<link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body>
 
@@ -829,6 +829,8 @@
         <label class="field"><span>Your WhatsApp number</span>
           <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="e.g. 0300 1234567"></label>
       </div>
+      <label class="field"><span>Your email <i>(optional)</i></span>
+        <input type="email" name="email" autocomplete="email" inputmode="email" maxlength="120" placeholder="e.g. ahmed@gmail.com"></label>
       <fieldset class="field field--chips">
         <legend>What do you need?</legend>
         <div class="lead__chips">
@@ -844,7 +846,7 @@
       <p class="lead__error" id="leadError" role="alert" hidden></p>
       <div class="lead__actions">
         <button class="btn btn--wa" type="submit">Send on WhatsApp ↗</button>
-        <span class="lead__note mono">Your details go only to me.</span>
+        <span class="lead__note mono">Saved only so I can reply. Never shared.</span>
       </div>
       <div class="lead__done" id="leadDone" role="status" hidden>
         <b>Thanks<span id="leadName"></span> — WhatsApp is opening with your message.</b>
@@ -870,6 +872,7 @@
     <span>© 2026 Ali Haider Azam · KONO</span>
     <span>Gujranwala, Pakistan · <span data-clock>--:--</span> PKT</span>
     <a href="https://instagram.com/kono_builds" target="_blank" rel="noopener">Instagram @kono_builds</a>
+    <span>Visits are counted without cookies. Details you send are kept only so I can reply — ask and I’ll delete them.</span>
     <a href="#top">Back to top ↑</a>
   </div>
   <div class="foot__big" aria-hidden="true"><span class="kin">Haider</span><span class="serif">.</span></div>
@@ -907,7 +910,8 @@
 <script src="assets/vendor/lenis.min.js" defer></script>
 <script src="pixel.js?v=4" defer></script>
 <script src="analytics.js?v=1" defer></script>
+<script src="tracker.js?v=1" defer></script>
 <script src="data.js?v=13" defer></script>
-<script src="main.js?v=11" defer></script>
+<script src="main.js?v=12" defer></script>
 </body>
 </html>
