@@ -1219,6 +1219,47 @@
     });
   }
 
+  /* ---------- lead form: answers → a ready-written WhatsApp message ---------- */
+  function lead() {
+    const form = $('#start');
+    if (!form) return;
+    const WA = '923076162544', MAIL = 'konobuilds@gmail.com';
+    const err = $('#leadError'), done = $('#leadDone');
+    const field = n => form.elements[n];
+    const bad = (el, msg) => {
+      $$('.field', form).forEach(f => f.classList.remove('is-bad'));
+      if (el) { el.closest('.field')?.classList.add('is-bad'); el.focus({ preventScroll: false }); }
+      err.textContent = msg; err.hidden = !msg;
+    };
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = field('name').value.trim().replace(/\s+/g, ' ');
+      const phone = field('phone').value.trim();
+      const need = (form.querySelector('input[name="need"]:checked') || {}).value || '';
+      const details = field('details').value.trim();
+      if (name.length < 2) return bad(field('name'), 'Please add your name.');
+      if (phone.replace(/\D/g, '').length < 10) return bad(field('phone'), 'Please add your WhatsApp number, with all its digits.');
+      if (!need) return bad(null, 'Please pick what you need — or choose “Something else”.');
+      bad(null, '');
+      const lines = ['Assalam o Alaikum Haider!', `I’m ${name}.`, `I need: ${need}.`];
+      if (details) lines.push(details);
+      lines.push(`My WhatsApp number: ${phone}`, '(Sent from haiderportfolio.online)');
+      const text = lines.join('\n');
+      const url = `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
+      // tell the TikTok pixel (pixel.js listens for this); only the chosen category is shared, never the name or number
+      document.dispatchEvent(new CustomEvent('lead:submit', { detail: { need } }));
+      $('#leadName').textContent = ', ' + name.split(' ')[0];
+      $('#leadAgain').href = url;
+      $('#leadMail').href = `mailto:${MAIL}?subject=${encodeURIComponent('New project — ' + name)}&body=${encodeURIComponent(text)}`;
+      done.hidden = false;
+      const w = window.open(url, '_blank', 'noopener');
+      if (w === null) location.href = url; // pop-up blocked (common on phones): go there directly
+    });
+    form.addEventListener('input', () => { if (!err.hidden) bad(null, ''); });
+    // the floating WhatsApp button would sit on top of the form's own Send button on phones
+    watch(form, v => $('.wa-float')?.classList.toggle('is-away', v), { threshold: 0.15 });
+  }
+
   /* ---------- boot ---------- */
   function boot() {
     theme();
@@ -1244,6 +1285,7 @@
     leaner();
     pipeline();
     contact();
+    lead();
     loader().then(() => window.ScrollTrigger && ScrollTrigger.refresh());
     addEventListener('load', () => window.ScrollTrigger && ScrollTrigger.refresh());
   }

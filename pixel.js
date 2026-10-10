@@ -14,6 +14,8 @@
    - Contact      taps on WhatsApp, the email address or "Copy email"
                   ← the event to optimise ads for
    - ViewContent  opening a project's details
+   - SubmitForm   the lead form in the Contact section is submitted
+                  ← the best event to optimise ads for
    - ClickButton  taps on Instagram or a "Visit site" button
    ===================================================================== */
 (function () {
@@ -64,6 +66,11 @@
       return send('ClickButton', 'Visit ' + href.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]);
     }
   }, true);
+
+  // --- Lead form submitted (main.js announces it) → the conversion to optimise ads for ---
+  document.addEventListener('lead:submit', function (e) {
+    send('SubmitForm', (e.detail && e.detail.need) || 'Lead form');
+  });
 
   // --- Tell visitors, once the pixel is actually running ---
   document.addEventListener('DOMContentLoaded', function () {

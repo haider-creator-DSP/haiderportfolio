@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <!-- ?v= numbers force browsers to fetch fresh files after an update; bump them when you change a file -->
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 
@@ -651,6 +651,38 @@
   <div class="wrap">
     <p class="mono eyebrow" data-reveal>Have something in mind?</p>
     <h2 class="contact__title" data-split>Let’s build the thing your business <em class="serif accent">runs on.</em></h2>
+    <!-- Lead form: builds a WhatsApp message from the answers (no server needed). Ads can link to /#start -->
+    <form class="lead" id="start" novalidate data-reveal>
+      <p class="lead__title">Tell me what you need. <span>I’ll reply on WhatsApp.</span></p>
+      <div class="lead__row">
+        <label class="field"><span>Your name</span>
+          <input type="text" name="name" autocomplete="name" required maxlength="60" placeholder="e.g. Ahmed Khan"></label>
+        <label class="field"><span>Your WhatsApp number</span>
+          <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="e.g. 0300 1234567"></label>
+      </div>
+      <fieldset class="field field--chips">
+        <legend>What do you need?</legend>
+        <div class="lead__chips">
+          <label><input type="radio" name="need" value="A mobile app"><span>Mobile app</span></label>
+          <label><input type="radio" name="need" value="An online store"><span>Online store</span></label>
+          <label><input type="radio" name="need" value="A dashboard"><span>Dashboard</span></label>
+          <label><input type="radio" name="need" value="A website"><span>Website</span></label>
+          <label><input type="radio" name="need" value="Something else"><span>Something else</span></label>
+        </div>
+      </fieldset>
+      <label class="field"><span>Anything else? <i>(optional)</i></span>
+        <textarea name="details" rows="3" maxlength="500" placeholder="A line about your business or idea"></textarea></label>
+      <p class="lead__error" id="leadError" role="alert" hidden></p>
+      <div class="lead__actions">
+        <button class="btn btn--wa" type="submit">Send on WhatsApp ↗</button>
+        <span class="lead__note mono">Your details go only to me.</span>
+      </div>
+      <div class="lead__done" id="leadDone" role="status" hidden>
+        <b>Thanks<span id="leadName"></span> — WhatsApp is opening with your message.</b>
+        <span>Just press send there. <a id="leadAgain" href="#" target="_blank" rel="noopener">Didn’t open? Tap here</a> · <a id="leadMail" href="#">Email it instead</a></span>
+      </div>
+    </form>
+
     <div data-reveal>
       <a class="contact__mail" href="mailto:konobuilds@gmail.com" data-magnetic>konobuilds@gmail.com</a>
       <div class="contact__btns">
@@ -694,8 +726,8 @@
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
-<script src="pixel.js?v=2" defer></script>
+<script src="pixel.js?v=3" defer></script>
 <script src="data.js?v=12" defer></script>
-<script src="main.js?v=7" defer></script>
+<script src="main.js?v=9" defer></script>
 </body>
 </html>
