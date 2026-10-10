@@ -615,7 +615,7 @@
       ${p.features ? `<p class="mono case__h">What’s inside</p><div class="case__feats">${p.features.map(([t, d]) => `<div><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('')}</div>` : ''}
       ${p.facts ? `<ul class="case__facts">${p.facts.map(f => `<li><span>${f}</span></li>`).join('')}</ul>` : ''}
       <ul class="tags">${(p.stack || []).map(s => `<li>${esc(s)}</li>`).join('')}</ul>
-      <div class="case__links">${p.link ? `<a class="btn btn--accent btn--sm" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)} ↗</a>` : ''}</div>
+      <div class="case__links"><a class="btn btn--wa btn--sm" href="https://wa.me/923076162544?text=${encodeURIComponent(`Assalam o Alaikum Haider! I saw ${p.name} on your portfolio and I want something like it.`)}" target="_blank" rel="noopener">Want something like this? ↗</a>${p.link ? `<a class="btn btn--sm" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)} ↗</a>` : ''}</div>
       <div class="case__pager">
         <button type="button" data-go="${prev.id}"><small>← Previous</small>${esc(prev.name)}</button>
         <button type="button" data-go="${next.id}" style="text-align:right"><small>Next →</small>${esc(next.name)}</button>
@@ -1257,7 +1257,141 @@
     });
     form.addEventListener('input', () => { if (!err.hidden) bad(null, ''); });
     // the floating WhatsApp button would sit on top of the form's own Send button on phones
-    watch(form, v => $('.wa-float')?.classList.toggle('is-away', v), { threshold: 0.15 });
+    watch(form, v => $$('.wa-float, .quiz-pill').forEach(el => el.classList.toggle('is-away', v)), { threshold: 0.15 });
+  }
+
+  /* ---------- "Which one are you?" — a short quiz that ends in a tailored offer on WhatsApp ---------- */
+  function quiz() {
+    const O = window.OFFERS || [], box = $('#quiz'), body = $('#quizBody'), pill = $('#quizPill');
+    if (!O.length || !box) return;
+    const WA = '923076162544', KEY = 'hp-quiz';
+    const offer = Object.fromEntries(O.map(o => [o.id, o]));
+    // pixel.js listens for this; only the step and the chosen answer are shared, never a name
+    const say = (step, id) => document.dispatchEvent(new CustomEvent('quiz:step', { detail: { step, id: id || '' } }));
+    let isOpen = false, lastFocus = null, autoDone = false;
+
+    // the same question as tap buttons, wherever the page has a [data-who] slot (hero, mid-page band)
+    $$('[data-who] .who__chips').forEach(el => {
+      el.innerHTML = O.map(o => `<button type="button" class="who__chip" data-seg="${o.id}">${esc(o.chip)}</button>`).join('');
+    });
+
+    const thumb = p => {
+      const c = (p && p.cover) || {};
+      if (c.d) return c.d.replace('assets/shots/', 'assets/tiles/');
+      if (c.phones) return c.phones[1] || c.phones[0];
+      return c.m ? c.m.replace('assets/shots/', 'assets/tiles/') : '';
+    };
+    const stepOne = () => `
+      <p class="mono eyebrow">One quick question</p>
+      <h2 class="quiz__title" id="quizTitle">Which one sounds <em class="serif">like you?</em></h2>
+      <div class="quiz__opts">${O.map((o, i) => `<button type="button" class="quiz__opt" data-seg="${o.id}"><span class="mono">0${i + 1}</span>${esc(o.label)}</button>`).join('')}</div>
+      <p class="quiz__foot mono">Takes 20 seconds · no signup</p>`;
+    const stepTwo = o => {
+      const p = byId[o.proof], img = thumb(p);
+      return `
+      <button class="quiz__back mono" type="button" data-back>← Back</button>
+      <p class="mono eyebrow">${esc(o.chip)}</p>
+      <h2 class="quiz__title" id="quizTitle">${o.title}</h2>
+      <p class="quiz__lead">${esc(o.lead)}</p>
+      <ul class="quiz__list">${o.bullets.map(b => `<li>${esc(b)}</li>`).join('')}</ul>
+      ${p ? `<div class="quiz__proof">${img ? `<img src="${img}" alt="" loading="lazy" decoding="async">` : '<span></span>'}<div><span class="mono">I’ve done this</span><b>${esc(p.name)}</b>${esc(o.proofLine)}</div></div>` : ''}
+      <form class="quiz__form" data-seg="${o.id}" novalidate>
+        <label class="field"><span>Your name <i>(optional)</i></span><input type="text" name="name" maxlength="60" autocomplete="name" placeholder="e.g. Ahmed Khan"></label>
+        <button class="btn btn--wa" type="submit">${esc(o.cta)} on WhatsApp ↗</button>
+      </form>
+      <p class="quiz__foot mono">Opens WhatsApp with a ready message · free, no obligation</p>`;
+    };
+    const stepDone = (name, url) => `
+      <p class="mono eyebrow">Almost done</p>
+      <h2 class="quiz__title" id="quizTitle">WhatsApp is <em class="serif">opening${name ? ', ' + esc(name.split(' ')[0]) : ''}.</em></h2>
+      <p class="quiz__lead">Just press send there, and I’ll reply with your plan.</p>
+      <div class="quiz__form"><a class="btn btn--wa" href="${url}" target="_blank" rel="noopener">Didn’t open? Tap here ↗</a></div>`;
+
+    const render = html => { body.innerHTML = html; $('.quiz__card', box).scrollTop = 0; };
+    function open(seg, how) {
+      if (current) return; // a project is open; don't stack a popup on top of it
+      if (!isOpen) {
+        lastFocus = document.activeElement;
+        isOpen = true;
+        box.classList.add('is-open');
+        box.setAttribute('aria-hidden', 'false');
+        root.classList.add('quiz-open');
+        lockScroll(true);
+        say('open', how);
+      }
+      if (seg && offer[seg]) { render(stepTwo(offer[seg])); say('segment', seg); }
+      else render(stepOne());
+      $('.quiz__x', box).focus({ preventScroll: true });
+    }
+    function close() {
+      if (!isOpen) return;
+      isOpen = false;
+      box.classList.remove('is-open');
+      box.setAttribute('aria-hidden', 'true');
+      root.classList.remove('quiz-open');
+      lockScroll(false);
+      store.set(KEY, String(Date.now())); // don't pop up again by itself for a few days
+      if (pill) pill.hidden = false;
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    }
+
+    document.addEventListener('click', e => {
+      const pick = e.target.closest('.who__chip, .quiz__opt');
+      if (pick) return open(pick.dataset.seg, 'chip');
+      if (e.target.closest('[data-quiz-close]')) return close();
+      if (e.target.closest('[data-back]')) return render(stepOne());
+      const t = e.target.closest('[data-quiz]');
+      if (t) { e.preventDefault(); open(null, 'button'); }
+    });
+    box.addEventListener('submit', e => {
+      e.preventDefault();
+      const o = offer[e.target.dataset.seg];
+      if (!o) return;
+      const name = e.target.elements.name.value.trim().replace(/\s+/g, ' ');
+      const lines = ['Assalam o Alaikum Haider!'];
+      if (name) lines.push(`I’m ${name}.`);
+      lines.push(o.label + '.', `I’d like ${o.offer}.`, '(From haiderportfolio.online)');
+      const url = `https://wa.me/${WA}?text=${encodeURIComponent(lines.join('\n'))}`;
+      say('submit', o.id);
+      store.set(KEY + '-done', '1');
+      render(stepDone(name, url));
+      const w = window.open(url, '_blank', 'noopener');
+      if (w === null) location.href = url; // pop-up blocked (common on phones): go there directly
+    });
+    addEventListener('keydown', e => {
+      if (!isOpen) return;
+      if (e.key === 'Escape') return close();
+      if (e.key !== 'Tab') return; // keep keyboard focus inside the popup
+      const f = $$('button, a[href], input', box).filter(el => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    // --- opening by itself: once, at a random moment, and never when it would interrupt ---
+    const recently = () => !!store.get(KEY + '-done') || (Date.now() - (+store.get(KEY) || 0) < 3 * 864e5);
+    const busy = () => {
+      if (current || document.hidden || root.classList.contains('menu-open')) return true;
+      if (/^(INPUT|TEXTAREA)$/.test((document.activeElement || {}).tagName || '')) return true;
+      const f = $('#start');
+      if (f) { const r = f.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) return true; } // already at the form
+      return false;
+    };
+    const auto = () => {
+      if (autoDone || isOpen || recently() || busy()) return false;
+      autoDone = true;
+      open(null, 'auto');
+      return true;
+    };
+    setTimeout(function retry() {
+      if (autoDone || recently()) return;
+      if (!auto()) setTimeout(retry, 5000);
+    }, 12000 + Math.random() * 12000);
+    if (fine) document.addEventListener('mouseout', e => { // the mouse leaves through the top: about to close the tab
+      if (!e.relatedTarget && e.clientY <= 0 && performance.now() > 8000) auto();
+    });
+    setTimeout(() => { if (pill && !isOpen) pill.hidden = false; }, 8000);
   }
 
   /* ---------- boot ---------- */
@@ -1286,6 +1420,7 @@
     pipeline();
     contact();
     lead();
+    quiz();
     loader().then(() => window.ScrollTrigger && ScrollTrigger.refresh());
     addEventListener('load', () => window.ScrollTrigger && ScrollTrigger.refresh());
   }

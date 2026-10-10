@@ -72,6 +72,14 @@
     send('SubmitForm', (e.detail && e.detail.need) || 'Lead form');
   });
 
+  // --- "Which one are you?" quiz (main.js announces each step) ---
+  document.addEventListener('quiz:step', function (e) {
+    var d = e.detail || {};
+    if (d.step === 'open') send('ClickButton', 'Quiz opened (' + d.id + ')');
+    else if (d.step === 'segment') send('ViewContent', 'Quiz: ' + d.id);
+    else if (d.step === 'submit') send('SubmitForm', 'Quiz: ' + d.id);
+  });
+
   // --- Tell visitors, once the pixel is actually running ---
   document.addEventListener('DOMContentLoaded', function () {
     var row = document.querySelector('.foot__row');

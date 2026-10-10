@@ -459,4 +459,58 @@
       cover: { type: 'type', title: 'Tiles. Ceramics. Sanitary.', sub: 'Site · invoices · analytics' },
     },
   ];
+  /* ---------- "Which one are you?" — the six answers and the offer each one sees ----------
+     chip   short label on the tap buttons          label  full sentence in the popup
+     offer  how the WhatsApp message names it       proof  id of a project above, shown as evidence
+     Edit the words freely; nothing else needs to change. */
+  window.OFFERS = [
+    {
+      id: 'new-business', chip: 'Starting a business', label: 'I’m starting a new business',
+      title: 'Launch with the right <em class="serif">first version.</em>',
+      lead: 'You don’t need everything on day one. I’ll plan the smallest version that can take real orders — then build it.',
+      bullets: ['A free plan: what to build first, and what to skip', 'A fixed quote before any work starts', 'Built to grow — add features later without starting over'],
+      proof: 'naznur', proofLine: 'A brand launched from zero — store and operations console, now live.',
+      cta: 'Get my free launch plan', offer: 'the free launch plan',
+    },
+    {
+      id: 'shop-online', chip: 'Shop going online', label: 'I have a shop and want to sell online',
+      title: 'Take your shop online — <em class="serif">with cash on delivery.</em>',
+      lead: 'Your customers already trust you. I’ll give them a way to order from their phone, and give you one place to manage it.',
+      bullets: ['Your own store with cash-on-delivery checkout and WhatsApp ordering', 'A dashboard for orders and stock', 'A free plan and a fixed quote first'],
+      proof: 'duakhana', proofLine: 'A herbal store selling across Pakistan on a platform I built.',
+      cta: 'Get my free store plan', offer: 'the free store plan',
+    },
+    {
+      id: 'store-not-selling', chip: 'Store not selling', label: 'My Shopify or online store isn’t selling',
+      title: 'Find out why your store <em class="serif">isn’t selling.</em>',
+      lead: 'Usually it’s a few fixable things: speed, trust, or a checkout that loses people. I’ll look and tell you straight.',
+      bullets: ['A free check-up of your store: speed, trust and checkout', 'The three fixes that matter most, sent on WhatsApp', 'I can fix them — or rebuild it properly if that makes more sense'],
+      proof: 'ahk', proofLine: 'A knife store selling worldwide at ahknives.com.',
+      cta: 'Get my free store check-up', offer: 'the free store check-up',
+    },
+    {
+      id: 'need-dashboard', chip: 'Need a dashboard', label: 'I run my business on WhatsApp and Excel',
+      title: 'Replace the WhatsApp-and-Excel <em class="serif">chaos.</em>',
+      lead: 'Orders in chats, stock in a sheet, money in your head. I’ll put it in one dashboard your whole team can use.',
+      bullets: ['Orders, stock, staff and reports in one place', 'Roles, so everyone sees only their part', 'A free plan of what your dashboard would include'],
+      proof: 'pakiza-admin', proofLine: 'A shop dashboard with 22+ screens, live every day.',
+      cta: 'Get my free dashboard plan', offer: 'the free dashboard plan',
+    },
+    {
+      id: 'app-idea', chip: 'App idea', label: 'I have an idea for an app',
+      title: 'Turn the idea into an app <em class="serif">people can download.</em>',
+      lead: 'I’ll help you cut the idea down to a first version worth building, then build it for Android and iPhone.',
+      bullets: ['Android and iOS from one build', 'Published to the app stores for you', 'A free plan: features, steps and a fixed quote'],
+      proof: 'pakiza-mart', proofLine: 'A grocery delivery app, live on Google Play.',
+      cta: 'Get my free app plan', offer: 'the free app plan',
+    },
+    {
+      id: 'need-website', chip: 'Need a website', label: 'I need a website for my brand, clinic or studio',
+      title: 'A website that makes people <em class="serif">contact you.</em>',
+      lead: 'Not a brochure. A site built around one job — turning a visitor into a call, a booking or a message.',
+      bullets: ['Designed around enquiries, not decoration', 'Fast on phones, in the languages your clients speak', 'A free plan and a fixed quote first'],
+      proof: 'violeta', proofLine: 'A surgeon’s bilingual site with online booking, live.',
+      cta: 'Get my free website plan', offer: 'the free website plan',
+    },
+  ];
 })();

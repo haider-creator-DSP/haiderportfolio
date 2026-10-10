@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <!-- ?v= numbers force browsers to fetch fresh files after an update; bump them when you change a file -->
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 
@@ -61,7 +61,7 @@
       <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
       <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg>
     </button>
-    <a href="#contact" class="btn btn--sm btn--accent nav__cta" data-magnetic>Let’s talk</a>
+    <button type="button" class="btn btn--sm btn--accent nav__cta" data-quiz data-magnetic>Let’s talk</button>
     <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
   </div>
 </header>
@@ -92,10 +92,15 @@
     <div class="hero__row">
       <p class="hero__sub" data-hero style="--d:6">Apps, storefronts, custom dashboards and the servers behind them. <b>22 builds</b> — an app live on Google Play, stores live on the web, a dashboard with 19 themes. Everything behind me is real.</p>
       <div class="hero__cta" data-hero style="--d:7">
-        <a class="btn btn--accent" href="#work" data-magnetic>See everything
+        <button class="btn btn--accent" type="button" data-quiz data-magnetic>Get a free plan ↗</button>
+        <a class="btn" href="#work" data-magnetic>See the work
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-        <a class="btn" href="#live" data-magnetic><span class="live-dot"></span>What’s live</a>
       </div>
+    </div>
+    <!-- "Which one are you?" — tapping one opens the matching offer (rendered from OFFERS in data.js) -->
+    <div class="who who--hero" data-who data-hero style="--d:8">
+      <span class="mono">Which one are you?</span>
+      <div class="who__chips"></div>
     </div>
   </div>
   <div class="wrap hero__foot mono" data-hero style="--d:8">
@@ -198,6 +203,20 @@
     </header>
     <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
     <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- ============ WHICH ONE ARE YOU ============ -->
+<section class="band" aria-labelledby="band-h">
+  <div class="wrap">
+    <div class="band__in" data-reveal>
+      <div>
+        <p class="mono eyebrow">Enough looking</p>
+        <h2 id="band-h">Which one <em class="serif">are you?</em></h2>
+        <p class="band__p">Pick one and I’ll show you what I’d build for you — with a free plan on WhatsApp.</p>
+      </div>
+      <div class="who" data-who><div class="who__chips"></div></div>
+    </div>
   </div>
 </section>
 
@@ -712,6 +731,16 @@
   <span>WhatsApp</span>
 </a>
 
+<!-- ============ QUIZ POPUP ============ -->
+<div class="quiz" id="quiz" role="dialog" aria-modal="true" aria-labelledby="quizTitle" aria-hidden="true">
+  <div class="quiz__bg" data-quiz-close></div>
+  <div class="quiz__card" data-lenis-prevent>
+    <button class="quiz__x" type="button" data-quiz-close aria-label="Close">✕</button>
+    <div class="quiz__body" id="quizBody"></div>
+  </div>
+</div>
+<button class="quiz-pill" id="quizPill" type="button" data-quiz hidden>Which one are you? <span>Free plan →</span></button>
+
 <!-- ============ CASE VIEWER ============ -->
 <div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="caseTitle" aria-hidden="true">
   <div class="case__bg"></div>
@@ -726,8 +755,8 @@
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
-<script src="pixel.js?v=3" defer></script>
-<script src="data.js?v=12" defer></script>
-<script src="main.js?v=9" defer></script>
+<script src="pixel.js?v=4" defer></script>
+<script src="data.js?v=13" defer></script>
+<script src="main.js?v=10" defer></script>
 </body>
 </html>
