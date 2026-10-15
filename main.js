@@ -688,7 +688,7 @@
   function caseKeys() {
     addEventListener('keydown', e => {
       if (!current) return;
-      if (e.key === 'Escape') closeCase();
+      if (e.key === 'Escape') return closeCase();
       const list = visibleIds(), i = list.indexOf(current.id);
       if (e.key === 'ArrowRight') swapCase(list[(i + 1) % list.length]);
       if (e.key === 'ArrowLeft') swapCase(list[(i - 1 + list.length) % list.length]);
